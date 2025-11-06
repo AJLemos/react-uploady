@@ -99,7 +99,7 @@ describe("UploadDropZone tests", () => {
             expect(UploadyContext.upload)
                 .toHaveBeenCalledWith(files, {
                     autoUpload: true
-                });
+                }, "dnd");
         });
     });
 
@@ -142,7 +142,7 @@ describe("UploadDropZone tests", () => {
             expect(UploadyContext.upload)
                 .toHaveBeenCalledWith(files, {
                     autoUpload: true
-                });
+                }, "dnd");
         });
     });
 
@@ -168,7 +168,7 @@ describe("UploadDropZone tests", () => {
             expect(UploadyContext.upload)
                 .toHaveBeenCalledWith([1], {
                     autoUpload: true
-                });
+                }, "dnd");
         });
     });
 

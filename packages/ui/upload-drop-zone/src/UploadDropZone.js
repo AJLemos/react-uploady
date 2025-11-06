@@ -62,7 +62,7 @@ const UploadDropZone: React.ComponentType<UploadDropZoneProps> = forwardRef(
         const handleDropUpload = useCallback((e: SyntheticDragEvent<HTMLDivElement>) => {
             dropFileHandler(e)
                 .then((files) => {
-                    upload(files, uploadOptionsRef.current);
+                    upload(files, uploadOptionsRef.current, "dnd");
                 });
         }, [upload, dropFileHandler, uploadOptionsRef]);
 

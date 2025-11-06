@@ -40,7 +40,7 @@ describe("UploadyContext tests", () => {
 
         contextApi.upload(files, options);
 
-        expect(uploader.add).toHaveBeenCalledWith(files, options);
+        expect(uploader.add).toHaveBeenCalledWith(files, options, undefined);
     });
 
 	it("processPending should call upload on uploader", () => {
@@ -169,7 +169,7 @@ describe("UploadyContext tests", () => {
 
             fileInput.addEventListener.mock.calls[0][1]();
 
-            expect(uploader.add).toHaveBeenCalledWith(files, options);
+            expect(uploader.add).toHaveBeenCalledWith(files, options, "input");
         });
     });
 });

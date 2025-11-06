@@ -89,7 +89,7 @@ describe("processor tests", () => {
 
            expect(batch).toBeNull();
            expect(queue.addBatch).not.toHaveBeenCalled();
-           expect(mockCreateBatch).toHaveBeenCalledWith(files, uploaderId, options);
+           expect(mockCreateBatch).toHaveBeenCalledWith(files, uploaderId, options, undefined);
         });
 
         it("should auto upload", async () => {

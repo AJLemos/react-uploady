@@ -8,6 +8,7 @@ import type {
     BatchItem,
     Batch,
     FileFilterMethod,
+    UploadSource,
 } from "@rpldy/shared";
 
 import type { UploaderCreateOptions } from "./types";
@@ -39,7 +40,12 @@ const processFiles = (batchId: string, files: UploadInfo, isPending: boolean, fi
                 .map((f) => createBatchItem(f, batchId, isPending)));
 };
 
-const createBatch = (files: UploadInfo | UploadInfo[], uploaderId: string, options: UploaderCreateOptions): Promise<Batch> => {
+const createBatch = (
+    files: UploadInfo | UploadInfo[],
+    uploaderId: string,
+    options: UploaderCreateOptions,
+    uploadSource?: UploadSource
+): Promise<Batch> => {
     bCounter += 1;
     const id = `batch-${bCounter}`;
 
@@ -61,6 +67,7 @@ const createBatch = (files: UploadInfo | UploadInfo[], uploaderId: string, optio
                 loaded: 0,
                 orgItemCount: items.length,
                 additionalInfo: null,
+                uploadSource,
             };
         });
 };

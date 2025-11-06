@@ -164,7 +164,7 @@ describe("uploader tests", () => {
 
             expect(mockAddNewBatch).toHaveBeenCalledWith([1, 2], expect.objectContaining({
                 autoUpload: true
-            }));
+            }), undefined);
         });
 
         it("should clear pending with clearPendingOnAdd in uploader options",async() => {

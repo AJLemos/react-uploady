@@ -1,5 +1,5 @@
 // @flow
-import type { Trigger, UploadInfo, UploadOptions } from "@rpldy/shared";
+import type { Trigger, UploadInfo, UploadOptions, UploadSource } from "@rpldy/shared";
 import type { OffMethod, OnAndOnceMethod } from "@rpldy/life-events";
 
 export type UploaderEnhancer<T> = (uploader: UploaderType<T>, trigger: Trigger<mixed>) => UploaderType<T>;
@@ -17,7 +17,7 @@ export type RawCreateOptions = {|
 export type UploaderType<T> = {
     id: string,
     update: (updateOptions: T) => UploaderType<T>,
-    add: (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions) => Promise<void>,
+    add: (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions, uploadSource?: UploadSource) => Promise<void>,
     upload: (uploadOptions?: ?UploadOptions) => void,
     abort: (id?: string) => void,
     abortBatch: (id: string) => void,

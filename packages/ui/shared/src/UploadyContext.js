@@ -4,7 +4,7 @@ import { logger, invariant } from "@rpldy/shared";
 import { registerUploadyContextVersion  } from "./uploadyVersion";
 
 import type { UploadyUploaderType, UploaderCreateOptions } from "@rpldy/uploader";
-import type { UploadInfo, UploadOptions, GetExact } from "@rpldy/shared";
+import type { UploadInfo, UploadOptions, GetExact, UploadSource } from "@rpldy/shared";
 import type { EventCallback } from "@rpldy/life-events";
 import type { UploadyContextType, InputRef } from "./types";
 
@@ -72,11 +72,11 @@ export const createContextApi =
 
             const addOptions = showFileUploadOptions;
             showFileUploadOptions = null;
-            upload(input.files, addOptions);
+            upload(input.files, addOptions, "input");
         };
 
-        const upload = (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions) => {
-            uploader.add(files, addOptions);
+        const upload = (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions, uploadSource?: UploadSource) => {
+            uploader.add(files, addOptions, uploadSource);
         };
 
 		const processPending = (uploadOptions?: ?UploadOptions) => {

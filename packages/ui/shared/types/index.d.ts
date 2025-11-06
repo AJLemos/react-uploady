@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Batch, BatchItem, UploadInfo, UploadOptions } from "@rpldy/shared";
+import { Batch, BatchItem, UploadInfo, UploadOptions, UploadSource } from "@rpldy/shared";
 import { CreateOptions, UploaderType } from "@rpldy/uploader";
 import { EventCallback, OffMethod, OnAndOnceMethod } from "@rpldy/life-events";
 
@@ -10,6 +10,7 @@ export {
     UploadOptions,
     Batch,
     BatchItem,
+    UploadSource,
 
     BATCH_STATES,
     FILE_STATES,
@@ -26,7 +27,7 @@ export {
 
 export type UploaderListeners = { [key: string]: EventCallback };
 
-export type AddUploadFunction = (files: UploadInfo | UploadInfo[], addOptions?: UploadOptions) => void;
+export type AddUploadFunction = (files: UploadInfo | UploadInfo[], addOptions?: UploadOptions, uploadSource?: UploadSource) => void;
 
 export type InputRef = { current: HTMLInputElement | null };
 

@@ -1,3 +1,5 @@
+export type UploadSource = "dnd" | "input";
+
 export type Destination = {
     url?: string;
     filesParamName?: string;
@@ -62,6 +64,7 @@ export type Batch = {
     total: number;
     orgItemCount: number;
     additionalInfo: string | null;
+    uploadSource?: UploadSource;
 };
 
 export enum FILE_STATES {
@@ -121,7 +124,7 @@ export type UploadData = {
     response: any;
 };
 
-export const createBatchItem: (f: UploadInfo, batchId: string, isPending?: boolean) => BatchItem;
+export const createBatchItem: (f: UploadInfo, batchId: string, isPending?: boolean, uploadSource?: UploadSource) => BatchItem;
 
 export const isPlainObject: (obj: unknown) => boolean;
 

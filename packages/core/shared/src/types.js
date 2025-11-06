@@ -1,6 +1,8 @@
 // @flow
 import { BATCH_STATES, FILE_STATES } from "./enums";
 
+export type UploadSource = "dnd" | "input";
+
 export type Destination = {
 	//upload URL
 	url?: ?string,
@@ -87,6 +89,8 @@ export type Batch = {
     //number of items originally added to batch when its created
     orgItemCount: number,
     additionalInfo: ?string,
+    //indicates whether batch was added via drag-and-drop or file input
+    uploadSource?: UploadSource,
 };
 
 export type FileFilterMethod = (File | string, number, FileLike[] | string[]) => boolean | Promise<boolean>;

@@ -1,6 +1,6 @@
 // @flow
 import { FILE_STATES } from "./enums";
-import type { BatchItem, UploadInfo } from "./types";
+import type { BatchItem, UploadInfo, UploadSource } from "./types";
 
 const BISYM = Symbol.for("__rpldy-bi__");
 
@@ -24,7 +24,7 @@ const getIsBatchItem = (obj: any): boolean => {
         obj[BISYM] === true);
 };
 
-const createBatchItem = (f: UploadInfo, batchId: string, isPending: boolean = false): BatchItem => {
+const createBatchItem = (f: UploadInfo, batchId: string, isPending: boolean = false, uploadSource?: UploadSource): BatchItem => {
     const isAlreadyBatchItem = getIsBatchItem(f);
     iCounter += (isAlreadyBatchItem) ? 0 : 1;
 

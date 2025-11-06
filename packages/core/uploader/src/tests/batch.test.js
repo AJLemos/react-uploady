@@ -157,4 +157,19 @@ describe("Batch tests", () => {
 
         expect(batch.items).toHaveLength(2);
     });
+
+    it("should create batch with uploadSource", async () => {
+        createBatchItem.mockReturnValueOnce("item1");
+
+        const files = [{}];
+
+        const dndBatch = await createBatch(files, "uploader1", { autoUpload: true }, "dnd");
+        expect(dndBatch.uploadSource).toBe("dnd");
+
+        const inputBatch = await createBatch(files, "uploader1", { autoUpload: true }, "input");
+        expect(inputBatch.uploadSource).toBe("input");
+
+        const noSourceBatch = await createBatch(files, "uploader1", { autoUpload: true });
+        expect(noSourceBatch.uploadSource).toBeUndefined();
+    });
 });

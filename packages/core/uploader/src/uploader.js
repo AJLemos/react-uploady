@@ -17,6 +17,7 @@ import composeEnhancers from "./composeEnhancers";
 import type {
     UploadInfo,
     UploadOptions,
+    UploadSource,
 } from "@rpldy/shared";
 import type { TriggerMethod } from "@rpldy/life-events";
 import type { UploaderEnhancer } from "@rpldy/raw-uploader";
@@ -78,7 +79,7 @@ const createUploader = (options?: UploaderCreateOptions): UploadyUploaderType =>
         return uploader;
     };
 
-    const add = (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions): Promise<void> => {
+    const add = (files: UploadInfo | UploadInfo[], addOptions?: ?UploadOptions, uploadSource?: UploadSource): Promise<void> => {
         const processOptions: UploaderCreateOptions = merge({}, uploaderOptions, addOptions);
 
         if (processOptions.clearPendingOnAdd) {
@@ -86,7 +87,7 @@ const createUploader = (options?: UploaderCreateOptions): UploadyUploaderType =>
         }
 
         return processor
-            .addNewBatch(files, processOptions)
+            .addNewBatch(files, processOptions, uploadSource)
             .then(() => {
                 logger.debugLog(`uploady.uploader: finished adding file data to be processed`);
             });

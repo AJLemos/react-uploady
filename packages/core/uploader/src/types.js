@@ -4,6 +4,7 @@ import type {
     UploadOptions,
     BatchItem,
     Batch,
+    UploadSource,
 } from "@rpldy/shared";
 
 import type { OnAndOnceMethod } from "@rpldy/life-events";
@@ -30,7 +31,8 @@ export type UploaderProcessor = {|
     abortBatch: (batchId: string) => void,
     addNewBatch: (
         files: UploadInfo | UploadInfo[],
-        processOptions: UploaderCreateOptions
+        processOptions: UploaderCreateOptions,
+        uploadSource?: UploadSource
     ) => Promise<?Batch>,
     clearPendingBatches: () => void,
     processPendingBatches: (uploadOptions: ?UploadOptions) => void,

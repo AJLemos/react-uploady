@@ -1,6 +1,6 @@
 // @flow
 import type { Node } from "react";
-import type { UploadInfo, UploadOptions, Batch, BatchItem } from "@rpldy/shared";
+import type { UploadInfo, UploadOptions, Batch, BatchItem, UploadSource } from "@rpldy/shared";
 import type { UploaderCreateOptions } from "@rpldy/uploader";
 import type { OnAndOnceMethod, OffMethod, EventCallback } from "@rpldy/life-events";
 
@@ -28,7 +28,7 @@ export type BatchEventHookWithState = EventHookWithState<Batch>;
 
 export type RefObject<T: mixed> = {current: null | void | T};
 
-export type AddUploadFunction = (files: UploadInfo | UploadInfo[], addOptions: ?UploadOptions) => void;
+export type AddUploadFunction = (files: UploadInfo | UploadInfo[], addOptions: ?UploadOptions, uploadSource?: UploadSource) => void;
 
 export type InputRef = { current: ?HTMLInputElement };
 

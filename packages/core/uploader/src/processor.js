@@ -26,8 +26,8 @@ const createProcessor =
             }
         };
 
-        const addNewBatch = (files: UploadInfo | UploadInfo[], processOptions: UploaderCreateOptions): Promise<?Batch> =>
-            createBatch(files, uploaderId, processOptions)
+        const addNewBatch = (files: UploadInfo | UploadInfo[], processOptions: UploaderCreateOptions, uploadSource?: "dnd" | "input"): Promise<?Batch> =>
+            createBatch(files, uploaderId, processOptions, uploadSource)
                 .then((batch) => {
                     let resultP;
 
